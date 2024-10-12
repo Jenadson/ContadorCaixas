@@ -56,6 +56,7 @@ function pause() {
 function stop() {
     clearInterval(intervalo);
     intervalo = null;
+    document.getElementById("ttime").textContent = "00:00";
     document.getElementById("contTime").textContent = "00:00";
     document.getElementById("contBox").textContent = "0";
     
