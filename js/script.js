@@ -5,6 +5,8 @@ let caixasRestantes = 0;
 let intervalo;
 
 
+
+
 function formatTime(segundos) {
     const minutos =Math.floor(segundos / 60);
     const restoSegundos = segundos % 60;
@@ -14,8 +16,9 @@ function formatTime(segundos) {
 
 function start() {
     if (!intervalo) {
+
         tempoRestante = totalCaixas.value * tempoPorCaixa.value;
-    caixasRestantes= totalCaixas.value;
+        caixasRestantes = totalCaixas.value;
     
 
     document.getElementById("ttime").textContent = formatTime(tempoRestante);
@@ -24,24 +27,25 @@ function start() {
 
     intervalo = setInterval(executar, 1000);
 
+    console.log("funcionado...", totalCaixas.value, tempoPorCaixa.value, tempoRestante, caixasRestantes );
+
     }
     
 }
 
 function executar() {
-    if (tempoRestante > 0 &&  caixasRestantes > 0 ) {
-        tempoRestante --;
+    if (tempoRestante > 0 && caixasRestantes > 0) {
+        tempoRestante--;
         document.getElementById("contTime").textContent = formatTime(tempoRestante);
-        
+
+        // Reduz a quantidade de caixas a cada execução do tempoPorCaixa
         if (tempoRestante % tempoPorCaixa.value === 0) {
             caixasRestantes--;
             document.getElementById("contBox").textContent = caixasRestantes;
-            
         }
-    }else{
-        stop()
+    } else {
+        stop(); // Para o cronômetro se o tempo acabar ou todas as caixas forem processadas
     }
-    
 }
 
 function pause() {
