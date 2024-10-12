@@ -16,7 +16,7 @@ function start() {
     if (!intervalo) {
         tempoRestante = totalCaixas.value * tempoPorCaixa.value;
     caixasRestantes= totalCaixas.value;
-    //console.log( "funcionando...", totalCaixas.value, tempoPorCaixa.value, tempoRestante);
+    
 
     document.getElementById("ttime").textContent = formatTime(tempoRestante);
     document.getElementById("contTime").textContent = formatTime(tempoRestante);
@@ -33,7 +33,7 @@ function executar() {
         tempoRestante --;
         document.getElementById("contTime").textContent = formatTime(tempoRestante);
         
-        if (tempoRestante % tempoPorCaixa === 0) {
+        if (tempoRestante % tempoPorCaixa.value === 0) {
             caixasRestantes--;
             document.getElementById("contBox").textContent = caixasRestantes;
             
