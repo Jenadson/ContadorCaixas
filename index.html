@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de tempo e caixas</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Contador de Tempo / Caixas</h1>
+        <div class="top">
+            
+            <div>
+                <div class="box">
+                    <input type="number" id="box" placeholder="Caixas">
+                </div>
+                <div class="time">
+                    <input type="number"  id="seconds" min="0" max="30" placeholder=" Segundos">
+                </div>
+            </div>
+            <div class="right">
+                <h2>Tempo Total</h2>
+                <span id="ttime">00:00</span>
+                <h2>Tempo restante</h2>
+                <span id="contTime">00:00:00</span>
+                <h2>Caixas restantes</h2>
+                <span id="contBox">0</span>
+            </div>
+        </div>
+        <div id="buttons">
+            <button onclick="start()">Iniciar</button>
+            <button onclick="pause()">Pausar</button>
+            <button onclick="stop()">Parar</button>
+        </div>
+    </div>
+    
+</body>
+</html>
