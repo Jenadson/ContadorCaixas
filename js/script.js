@@ -3,7 +3,7 @@ let tempoRestante = 0;
 let totalCaixas = document.getElementById("box");
 let caixasRestantes = 0;
 let intervalo;
-
+let tempoTotal = 0;
 
 
 
@@ -15,19 +15,21 @@ function formatTime(segundos) {
 }
 
 function start() {
-    if (!intervalo) {
+    if (!intervalo) {     
+        
+        if (tempoRestante === 0) {
+            tempoRestante = totalCaixas.value * tempoPorCaixa.value;
+            caixasRestantes = totalCaixas.value;
+            tempoTotal = tempoRestante;
+        }
 
-        tempoRestante = totalCaixas.value * tempoPorCaixa.value;
-        caixasRestantes = totalCaixas.value;
+        document.getElementById("ttime").textContent = formatTime(tempoRestante);
+        document.getElementById("contTime").textContent = formatTime(tempoRestante);
+        document.getElementById("contBox").textContent = caixasRestantes;
+
+        intervalo = setInterval(executar, 1000);
+
     
-
-    document.getElementById("ttime").textContent = formatTime(tempoRestante);
-    document.getElementById("contTime").textContent = formatTime(tempoRestante);
-    document.getElementById("contBox").textContent = caixasRestantes;
-
-    intervalo = setInterval(executar, 1000);
-
-    console.log("funcionado...", totalCaixas.value, tempoPorCaixa.value, tempoRestante, caixasRestantes );
 
     }
     
@@ -57,11 +59,38 @@ function pause() {
     
 }
 
-function stop() {
-    clearInterval(intervalo);
-    intervalo = null;
+
+
+function clearAll() {
+
+    if (intervalo){
+        clearInterval(intervalo);
+        intervalo = null;
+    } 
+
+    // Limpar os inputs
+    document.getElementById("box").value = '';
+    document.getElementById("seconds").value = '';
+
+    // Limpar os contadores exibidos
     document.getElementById("ttime").textContent = "00:00";
     document.getElementById("contTime").textContent = "00:00";
     document.getElementById("contBox").textContent = "0";
+
+    tempoRestante = 0;
+    caixasRestantes = 0;
     
+}
+
+function mark() {
+    // Obter o tempo restante e caixas restantes
+    const tempoAtual = formatTime(tempoRestante);
+    const caixasAtual = caixasRestantes;
+    const tempo = formatTime(tempoTotal);
+    // Criar um novo item de lista para exibir o salvamento
+    const item = document.createElement("li");
+    item.textContent = `Tempo T.: ${tempo}, Rest.: ${tempoAtual}, Cxs Rest.: ${caixasAtual}`;
+
+    // Adicionar o item ao histórico de salvamentos
+    document.getElementById("historico").appendChild(item);
 }
