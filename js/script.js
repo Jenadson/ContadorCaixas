@@ -89,7 +89,7 @@ function mark() {
     const tempo = formatTime(tempoTotal);
     // Criar um novo item de lista para exibir o salvamento
     const item = document.createElement("li");
-    item.textContent = `Tempo T.: ${tempo}, Rest.: ${tempoAtual}, Cxs ${totalCaixas},Cxs Rest.: ${caixasAtual}`;
+    item.textContent = `Tempo T.: ${tempo}, Rest.: ${tempoAtual.value}, Cxs ${totalCaixas},Cxs Rest.: ${caixasAtual}`;
 
     // Adicionar o item ao histórico de salvamentos
     document.getElementById("historico").appendChild(item);
