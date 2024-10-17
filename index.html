@@ -24,15 +24,20 @@
                 <h2>Tempo Total</h2>
                 <span id="ttime">00:00</span>
                 <h2>Tempo restante</h2>
-                <span id="contTime">00:00:00</span>
+                <span id="contTime">00:00</span>
                 <h2>Caixas restantes</h2>
                 <span id="contBox">0</span>
             </div>
         </div>
         <div id="buttons">
-            <button onclick="start()">Iniciar</button>
-            
-            <button onclick="stop()">Parar</button>
+            <button onclick="start()">Start</button>
+            <button onclick="pause()">Stop</button>
+            <button onclick="clearAll()">Clear</button>
+            <button onclick="mark()">Mark</button>
+        </div>
+        <div class="salvamentos">
+            <h2>Histórico de Salvamentos</h2>
+            <ul id="historico"></ul> <!-- Local onde os dados serão exibidos -->
         </div>
     </div>
     
